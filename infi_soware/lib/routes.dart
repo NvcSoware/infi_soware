@@ -7,6 +7,12 @@ class Routes {
   static const String home = '/home';
 
   static Map<String, WidgetBuilder> getRoutes() {
-    return {login: (context) => LoginScreen(), home: (context) => HomeScreen()};
+    return {
+      login: (context) => LoginScreen(),
+      home: (context) => HomeScreen(
+            username: '',
+            password: '',
+          )
+    };
   }
 }

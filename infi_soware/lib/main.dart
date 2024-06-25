@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:infi_soware/ui/screen/home_screen.dart';
-import 'package:infi_soware/ui/screen/login_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infi_soware/bloc/login/login_bloc.dart';
+import 'package:infi_soware/data/api_service.dart';
 import 'routes.dart';
 import 'style/app_theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(BlocProvider(
+    create: (context) => BranchListBloc(ApiService()),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

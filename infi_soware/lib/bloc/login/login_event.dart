@@ -1,21 +1,9 @@
 part of 'login_bloc.dart';
 
-abstract class LoginEvent {}
+abstract class BranchListEvent {}
 
-class UserNameChanged extends LoginEvent {
-  final String userName;
-
-  UserNameChanged(this.userName);
-}
-
-class PasswordChanged extends LoginEvent {
-  final String password;
-
-  PasswordChanged(this.password);
-}
-
-class LoginSubmitted extends LoginEvent {
+class LoginEvent extends BranchListEvent {
   final String userName;
   final String userPassword;
-  LoginSubmitted({required this.userName, required this.userPassword});
+  LoginEvent({required this.userName, required this.userPassword});
 }

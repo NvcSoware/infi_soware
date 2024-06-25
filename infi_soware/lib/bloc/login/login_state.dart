@@ -1,28 +1,19 @@
 part of 'login_bloc.dart';
 
-class LoginState {
-  // final String username;
-  // final String password;
+abstract class BranchListState {}
 
-  // LoginState({this.username = '', this.password = ''});
+class BranchListInitialState extends BranchListState {}
 
-  // LoginState copyWith({String? username, String? password}) {
-  //   return LoginState(
-  //       username: username ?? this.username,
-  //       password: password ?? this.password);
-  // }
-}
+class BranchListLoaingState extends BranchListState {}
 
-class LoginInitial extends LoginState {}
-
-class LoginLoading extends LoginState {}
-
-class LoginSuccess extends LoginState {
+class BranchListSuccessState extends BranchListState {
   final List<CompanyElement> companies;
-  LoginSuccess(this.companies);
+
+  BranchListSuccessState(this.companies);
 }
 
-class LoginFailure extends LoginState {
+class BranchListErrorState extends BranchListState {
   final String error;
-  LoginFailure(this.error);
+
+  BranchListErrorState(this.error);
 }

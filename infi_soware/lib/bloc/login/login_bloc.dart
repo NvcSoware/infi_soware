@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:infi_soware/model/login_response.dart';
+
 import 'package:meta/meta.dart';
 
 import '../../data/api_service.dart';
@@ -9,22 +11,23 @@ import '../../model/company_element.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState> {
+class BranchListBloc extends Bloc<BranchListEvent, BranchListState> {
   ApiService apiService;
-  LoginBloc(this.apiService) : super(LoginInitial()) {
-    on<LoginSubmitted>(_loginSubmitted);
+  BranchListBloc(this.apiService) : super(BranchListInitialState()) {
+    on<LoginEvent>(_loginSubmitted);
   }
 
   Future<void> _loginSubmitted(
-      LoginSubmitted event, Emitter<LoginState> emit) async {
-    emit(LoginLoading());
+      LoginEvent event, Emitter<BranchListState> emit) async {
+    emit(BranchListLoaingState());
     try {
-      final companies =
+      final loginResponse =
           await apiService.login(event.userName, event.userPassword);
-      emit(LoginSuccess(companies));
+
+      emit(BranchListSuccessState(loginResponse));
     } catch (e) {
       log('Error is $e');
-      emit(LoginFailure('Error : $e'));
+      emit(BranchListErrorState('Error : $e'));
     }
   }
 }
