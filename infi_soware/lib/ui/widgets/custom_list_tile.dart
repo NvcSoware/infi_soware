@@ -11,7 +11,7 @@ class CustomListTile extends StatelessWidget {
       required this.iconData,
       required this.title,
       required this.onTap,
-      this.backgroundColor = Colors.blue,
+      this.backgroundColor = const Color(0xff00447e),
       this.isSelected = false});
 
   @override
@@ -19,7 +19,6 @@ class CustomListTile extends StatelessWidget {
     return Container(
       color: backgroundColor,
       child: ListTile(
-        tileColor: Colors.amber,
         leading: Icon(
           iconData,
           color:

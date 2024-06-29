@@ -1,19 +1,28 @@
 part of 'login_bloc.dart';
 
-abstract class BranchListState {}
+abstract class LoginState {}
 
-class BranchListInitialState extends BranchListState {}
+class LoginInitialState extends LoginState {}
 
-class BranchListLoaingState extends BranchListState {}
+class LoginLoaingState extends LoginState {}
 
-class BranchListSuccessState extends BranchListState {
-  final List<CompanyElement> companies;
+class LoginSuccessState extends LoginState {
+  final CompanyElement companies;
+  final Function(CompanyList) onBranchSelected;
 
-  BranchListSuccessState(this.companies);
+  LoginSuccessState({required this.companies, required this.onBranchSelected});
+  showBranchListPopup(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => BranchListPopup(
+              branches: companies.companyList,
+              onBranchSelected: onBranchSelected,
+            ));
+  }
 }
 
-class BranchListErrorState extends BranchListState {
+class LoginErrorState extends LoginState {
   final String error;
 
-  BranchListErrorState(this.error);
+  LoginErrorState(this.error);
 }

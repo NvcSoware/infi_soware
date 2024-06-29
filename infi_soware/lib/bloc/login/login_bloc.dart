@@ -1,33 +1,35 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:infi_soware/model/login_response.dart';
 
 import 'package:meta/meta.dart';
 
 import '../../data/api_service.dart';
-import '../../model/company_element.dart';
+import '../../ui/widgets/branch_list_popup.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 
-class BranchListBloc extends Bloc<BranchListEvent, BranchListState> {
+class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ApiService apiService;
-  BranchListBloc(this.apiService) : super(BranchListInitialState()) {
+  LoginBloc(this.apiService) : super(LoginInitialState()) {
     on<LoginEvent>(_loginSubmitted);
   }
 
   Future<void> _loginSubmitted(
-      LoginEvent event, Emitter<BranchListState> emit) async {
-    emit(BranchListLoaingState());
+      LoginEvent event, Emitter<LoginState> emit) async {
+    emit(LoginLoaingState());
     try {
       final loginResponse =
           await apiService.login(event.userName, event.userPassword);
 
-      emit(BranchListSuccessState(loginResponse));
+      emit(LoginSuccessState(
+          companies: loginResponse, onBranchSelected: (CompanyList) {}));
     } catch (e) {
       log('Error is $e');
-      emit(BranchListErrorState('Error : $e'));
+      emit(LoginErrorState('Error : $e'));
     }
   }
 }

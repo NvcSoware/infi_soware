@@ -7,7 +7,7 @@ import 'style/app_theme.dart';
 
 void main() {
   runApp(BlocProvider(
-    create: (context) => BranchListBloc(ApiService()),
+    create: (context) => LoginBloc(ApiService()),
     child: const MyApp(),
   ));
 }
