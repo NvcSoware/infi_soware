@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:infi_soware/ui/utils/drop_down_items.dart';
+import 'package:infi_soware/constants.dart';
 import 'package:infi_soware/ui/widgets/common_text_form_field.dart';
 import 'package:infi_soware/ui/widgets/custom_button.dart';
-import 'package:infi_soware/ui/widgets/custom_text_field.dart';
 import 'package:intl/intl.dart';
 
 import '../../widgets/custom_drop_down.dart';
@@ -28,6 +26,11 @@ class _QuotationScreenState extends State<QuotationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Center(
+          child: Text(quotation),
+        ),
+      ),
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
@@ -41,7 +44,7 @@ class _QuotationScreenState extends State<QuotationScreen> {
                       color: Theme.of(context).colorScheme.primary,
                       size: const Size(96, 40),
                       child: Text(
-                        'NEW',
+                        newB,
                         style: Theme.of(context).textTheme.bodyLarge,
                       )),
                   CustomButton(
@@ -49,7 +52,7 @@ class _QuotationScreenState extends State<QuotationScreen> {
                       color: Theme.of(context).colorScheme.primary,
                       size: const Size(96, 40),
                       child: Text(
-                        'EDIT',
+                        editB,
                         style: Theme.of(context).textTheme.bodyLarge,
                       )),
                   CustomButton(
@@ -57,7 +60,7 @@ class _QuotationScreenState extends State<QuotationScreen> {
                       color: Theme.of(context).colorScheme.primary,
                       size: const Size(96, 40),
                       child: Text(
-                        'REPRINT',
+                        reprintB,
                         style: Theme.of(context).textTheme.bodyLarge,
                       )),
                 ],
@@ -65,7 +68,7 @@ class _QuotationScreenState extends State<QuotationScreen> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'NUMBER',
+                  number,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
@@ -73,10 +76,13 @@ class _QuotationScreenState extends State<QuotationScreen> {
                 children: [
                   Expanded(
                     flex: 1,
-                    child: CustomDropDown(
-                        items: ['GS10', 'GS58', 'AS400', 'FT/100', 'NL32'],
-                        hint: 'Select an Option',
-                        onChanged: (value) {}),
+                    child: CustomDropDown(items: const [
+                      'GS10',
+                      'GS58',
+                      'AS400',
+                      'FT/100',
+                      'NL32'
+                    ], hint: 'Select an Option', onChanged: (value) {}),
                   ),
                   Expanded(
                       flex: 1,
@@ -86,7 +92,7 @@ class _QuotationScreenState extends State<QuotationScreen> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'DATE',
+                  date,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
@@ -94,7 +100,7 @@ class _QuotationScreenState extends State<QuotationScreen> {
                 controller: _dateController,
                 decoration: InputDecoration(
                   labelText: widget.label,
-                  suffixIcon: Icon(Icons.calendar_today),
+                  suffixIcon: const Icon(Icons.calendar_today),
                 ),
                 readOnly: true,
                 onTap: () {
@@ -104,63 +110,63 @@ class _QuotationScreenState extends State<QuotationScreen> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'PAYMENT',
+                  payment,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               CustomDropDown(
-                  items: ['CASH', 'CREDIT', 'CARD'],
+                  items: const ['CASH', 'CREDIT', 'CARD'],
                   hint: 'CASH',
                   onChanged: (value) {}),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'REM 01',
+                    rem01,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
+                  )),
               CommonTextFormFiled(controller: _remController),
               Text(
-                'Supplier ',
+                supplier,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               TextFormField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                     prefixIcon: IconButton(
                         onPressed: () {
                           _showPopup(context);
                         },
-                        icon: Icon(Icons.add)),
-                    suffixIcon: Icon(Icons.search)),
+                        icon: const Icon(Icons.add)),
+                    suffixIcon: const Icon(Icons.search)),
               ),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Billing Address',
+                    billingAddress,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
+                  )),
               CommonTextFormFiled(controller: _remController),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Delivery Address',
+                    deliveryAddress,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
+                  )),
               CommonTextFormFiled(controller: _remController),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Phone',
+                    phone,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
+                  )),
               CommonTextFormFiled(controller: _remController),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Price Type',
+                    priceType,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
-              CustomDropDown(items: [
+                  )),
+              CustomDropDown(items: const [
                 'Consumer Card Price',
                 'Purchase Price',
                 'Purchase Cost',
@@ -171,19 +177,19 @@ class _QuotationScreenState extends State<QuotationScreen> {
                 'Max Retail Price',
               ], hint: 'Margin Free Price', onChanged: (value) {}),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Phone',
+                    phone,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
+                  )),
               CommonTextFormFiled(controller: _remController),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Stock Point',
+                    stockPoint,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
-              CustomDropDown(items: [
+                  )),
+              CustomDropDown(items: const [
                 'Godown 001',
                 'Godown x32',
                 'Godown ybh',
@@ -194,12 +200,12 @@ class _QuotationScreenState extends State<QuotationScreen> {
                 'Godown gd',
               ], hint: '--Select--', onChanged: (value) {}),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Area',
+                    area,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
-              CustomDropDown(items: [
+                  )),
+              CustomDropDown(items: const [
                 'Table 001',
                 'Table x32',
                 'Table ybh',
@@ -210,23 +216,23 @@ class _QuotationScreenState extends State<QuotationScreen> {
                 'Table gd',
               ], hint: '--Select--', onChanged: (value) {}),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Doc Number',
+                    docNumber,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
+                  )),
               CommonTextFormFiled(controller: _remController),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Doc Date',
+                    docDate,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
+                  )),
               TextFormField(
                 controller: _dateController,
                 decoration: InputDecoration(
                   labelText: widget.label,
-                  suffixIcon: Icon(Icons.calendar_today),
+                  suffixIcon: const Icon(Icons.calendar_today),
                 ),
                 readOnly: true,
                 onTap: () {
@@ -234,11 +240,11 @@ class _QuotationScreenState extends State<QuotationScreen> {
                 },
               ),
               Padding(
+                  padding: const EdgeInsets.all(12),
                   child: Text(
-                    'Doc Amount',
+                    docAmount,
                     style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                  padding: EdgeInsets.all(12)),
+                  )),
               CommonTextFormFiled(controller: _remController),
             ],
           ),
@@ -265,7 +271,6 @@ class _QuotationScreenState extends State<QuotationScreen> {
   @override
   void dispose() {
     _dateController.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 }
@@ -292,7 +297,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'LEDGER CODE',
+                  ledgerCode,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
@@ -300,7 +305,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'LEDGER NAME',
+                  ledgerName,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
@@ -308,7 +313,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'ACC STATUS',
+                  accStatus,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
@@ -316,7 +321,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'REMARKS',
+                  remarks,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
@@ -324,14 +329,14 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'ADDRESS',
+                  address,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Address 01',
+                  address01,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -341,7 +346,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Address 02',
+                  address02,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -351,7 +356,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Place',
+                  place,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -361,27 +366,27 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Phone',
+                  phone,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
               CommonTextFormFiled(
                 controller: _add03Controller,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'BANK DETAILS',
+                  bankDetails,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Account Name',
+                  accName,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -391,7 +396,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Account Number',
+                  accNumber,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -401,11 +406,11 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Account Type',
+                  accType,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
-              CustomDropDown(items: [
+              CustomDropDown(items: const [
                 'Current Account',
                 'Saving Account',
                 'Overdraft Account',
@@ -415,7 +420,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Bank Name',
+                  bankName,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -425,7 +430,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Branch Name',
+                  branchName,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -435,21 +440,21 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Ifsc Code',
+                  ifscCode,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
               CommonTextFormFiled(
                 controller: _add03Controller,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
                 children: [
                   Checkbox(value: false, onChanged: (onChanged) {}),
                   Text(
-                    'REQUIRE BILL WISE \n PAYMENT',
+                    requireBillwisePayment,
                     style: Theme.of(context).textTheme.bodySmall,
                   )
                 ],
@@ -457,14 +462,14 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'GST',
+                  gst,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Gst Number',
+                  gstNumber,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -474,7 +479,7 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'Pan Number',
+                  panNumber,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
@@ -484,11 +489,11 @@ void _showPopup(BuildContext context) {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  'State',
+                  state,
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
               ),
-              CustomDropDown(items: [
+              CustomDropDown(items: const [
                 'Kerala',
                 'Tamilnadu',
                 'Karnataka',
@@ -503,17 +508,17 @@ void _showPopup(BuildContext context) {
               children: [
                 CustomButton(
                     onPressed: () {},
-                    child: Text(
-                      'SAVE',
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
                     color: Theme.of(context).colorScheme.onPrimary,
-                    size: Size(96, 40)),
+                    size: const Size(96, 40),
+                    child: Text(
+                      save,
+                      style: Theme.of(context).textTheme.displayMedium,
+                    )),
                 CustomButton(
                     onPressed: () {},
-                    child: Text('CLOSE'),
                     color: Theme.of(context).colorScheme.onSecondary,
-                    size: Size(96, 40)),
+                    size: const Size(96, 40),
+                    child: const Text(close)),
               ],
             )
           ],

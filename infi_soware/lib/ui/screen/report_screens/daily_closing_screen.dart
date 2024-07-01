@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/custom_appbar.dart';
 import 'package:infi_soware/ui/widgets/custom_drop_down.dart';
 import 'package:intl/intl.dart';
 
@@ -18,6 +20,7 @@ class _DailyClosingScreenState extends State<DailyClosingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(title: dailyClosing),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -26,7 +29,7 @@ class _DailyClosingScreenState extends State<DailyClosingScreen> {
               controller: _dateController,
               decoration: InputDecoration(
                 labelText: widget.label,
-                suffixIcon: Icon(Icons.calendar_today),
+                suffixIcon: const Icon(Icons.calendar_today),
               ),
               readOnly: true,
               onTap: () {
@@ -40,16 +43,18 @@ class _DailyClosingScreenState extends State<DailyClosingScreen> {
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
-            CustomDropDown(
-                items: ['Group 32', 'Group 14', 'Test Group xx', 'Testing 234'],
-                hint: 'Group 32',
-                onChanged: (onChanged) {}),
+            CustomDropDown(items: const [
+              'Group 32',
+              'Group 14',
+              'Test Group xx',
+              'Testing 234'
+            ], hint: 'Group 32', onChanged: (onChanged) {}),
             TextFormField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8)),
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                     onPressed: () {},
                   )),
             )

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:infi_soware/ui/widgets/custom_appbar.dart';
 import 'package:infi_soware/ui/widgets/custom_drop_down.dart';
 import 'package:intl/intl.dart';
+
+import '../../../constants.dart';
 
 class InvoiceReportScreen extends StatefulWidget {
   final String label;
@@ -18,6 +21,7 @@ class _InvoiceReportScreenState extends State<InvoiceReportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(title: invoiceReport),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -25,11 +29,11 @@ class _InvoiceReportScreenState extends State<InvoiceReportScreen> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
-                'Transaction Type ',
+                transactionType,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
-            CustomDropDown(items: [
+            CustomDropDown(items: const [
               'Purchase',
               'Sale',
               'Purchase Order',
@@ -57,7 +61,7 @@ class _InvoiceReportScreenState extends State<InvoiceReportScreen> {
                     controller: _dateController,
                     decoration: InputDecoration(
                       labelText: widget.label,
-                      suffixIcon: Icon(Icons.calendar_today),
+                      suffixIcon: const Icon(Icons.calendar_today),
                     ),
                     readOnly: true,
                     onTap: () {
@@ -65,7 +69,7 @@ class _InvoiceReportScreenState extends State<InvoiceReportScreen> {
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
                 Expanded(
@@ -74,7 +78,7 @@ class _InvoiceReportScreenState extends State<InvoiceReportScreen> {
                     controller: _dateController,
                     decoration: InputDecoration(
                       labelText: widget.label,
-                      suffixIcon: Icon(Icons.calendar_today),
+                      suffixIcon: const Icon(Icons.calendar_today),
                     ),
                     readOnly: true,
                     onTap: () {

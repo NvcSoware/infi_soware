@@ -68,7 +68,7 @@ class _BranchListPopupState extends State<BranchListPopup> {
                             ),
                             Text(
                               branch.companyAddress,
-                              style: Theme.of(context).textTheme.bodySmall,
+                              // style: Theme.of(context).textTheme.bodySmall,
                             ),
                             SizedBox(
                               height: 5,
@@ -82,30 +82,36 @@ class _BranchListPopupState extends State<BranchListPopup> {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                CustomButton(
-                  onPressed: () {},
-                  child: Text(btnClose),
-                  color: Theme.of(context).colorScheme.onSecondary,
-                  size: Size(90, 40),
+                Expanded(
+                  flex: 1,
+                  child: CustomButton(
+                    onPressed: () {},
+                    child: Text(btnClose),
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    size: Size(90, 40),
+                  ),
                 ),
                 SizedBox(
                   width: 16,
                 ),
-                CustomButton(
-                  onPressed: selectedBranchIndex != -1
-                      ? () {
-                          final selectedBranch =
-                              widget.branches[selectedBranchIndex];
-                          widget.onBranchSelected(selectedBranch);
-                          _navigateToHomeScreen(context, selectedBranch);
-                        }
-                      : null,
-                  child: Text(
-                    btnSelect,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                Expanded(
+                  flex: 1,
+                  child: CustomButton(
+                    onPressed: selectedBranchIndex != -1
+                        ? () {
+                            final selectedBranch =
+                                widget.branches[selectedBranchIndex];
+                            widget.onBranchSelected(selectedBranch);
+                            _navigateToHomeScreen(context, selectedBranch);
+                          }
+                        : null,
+                    child: Text(
+                      btnSelect,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    color: Theme.of(context).colorScheme.onPrimary,
+                    size: Size(90, 40),
                   ),
-                  color: Theme.of(context).colorScheme.onPrimary,
-                  size: Size(90, 40),
                 )
               ],
             )

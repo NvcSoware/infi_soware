@@ -10,7 +10,7 @@ class CommonTextFormFiled extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(width: 3),
+              // borderSide: BorderSide(width: 2),
               borderRadius: BorderRadius.circular(15))),
     );
   }

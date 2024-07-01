@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/custom_appbar.dart';
 
 import '../../widgets/common_text_form_field.dart';
 import '../../widgets/custom_button.dart';
@@ -12,14 +14,17 @@ class PaymentScreen extends StatefulWidget {
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  TextEditingController _controller = TextEditingController();
-  TextEditingController _remController = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _remController = TextEditingController();
   // TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(
+        title: payment,
+      ),
       body: Container(
-        margin: EdgeInsets.all(12),
+        margin: const EdgeInsets.all(12),
         child: ListView(
           shrinkWrap: true,
           children: [
@@ -31,7 +36,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     color: Theme.of(context).colorScheme.primary,
                     size: const Size(96, 40),
                     child: Text(
-                      'NEW',
+                      newB,
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 CustomButton(
@@ -39,7 +44,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     color: Theme.of(context).colorScheme.primary,
                     size: const Size(96, 40),
                     child: Text(
-                      'EDIT',
+                      editB,
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 CustomButton(
@@ -47,7 +52,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     color: Theme.of(context).colorScheme.primary,
                     size: const Size(96, 40),
                     child: Text(
-                      'REPRINT',
+                      reprintB,
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
               ],
@@ -55,7 +60,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
-                'NUMBER',
+                number,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
@@ -64,7 +69,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 Expanded(
                   flex: 1,
                   child: CustomDropDown(
-                      items: ['GS10', 'GS58', 'AS400', 'FT/100', 'NL32'],
+                      items: const ['GS10', 'GS58', 'AS400', 'FT/100', 'NL32'],
                       hint: 'Select an Option',
                       onChanged: (value) {}),
                 ),
@@ -74,48 +79,48 @@ class _PaymentScreenState extends State<PaymentScreen> {
               ],
             ),
             Padding(
+                padding: const EdgeInsets.all(12),
                 child: Text(
-                  'Acc Book',
+                  accountBook,
                   style: Theme.of(context).textTheme.bodySmall,
-                ),
-                padding: EdgeInsets.all(12)),
+                )),
             CommonTextFormFiled(controller: _remController),
             Padding(
+                padding: const EdgeInsets.all(12),
                 child: Text(
-                  'Acc Head',
+                  accountHead,
                   style: Theme.of(context).textTheme.bodySmall,
-                ),
-                padding: EdgeInsets.all(12)),
+                )),
             TextFormField(
               decoration: InputDecoration(
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                     onPressed: () {},
                   ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8))),
             ),
             Padding(
+                padding: const EdgeInsets.all(12),
                 child: Text(
-                  'Narration',
+                  narration,
                   style: Theme.of(context).textTheme.bodySmall,
-                ),
-                padding: EdgeInsets.all(12)),
+                )),
             CommonTextFormFiled(controller: _remController),
             Padding(
+                padding: const EdgeInsets.all(12),
                 child: Text(
-                  'Description',
+                  description,
                   style: Theme.of(context).textTheme.bodySmall,
-                ),
-                padding: EdgeInsets.all(12)),
+                )),
             CommonTextFormFiled(controller: _remController),
             Padding(
+                padding: const EdgeInsets.all(12),
                 child: Text(
-                  'Cost Center',
+                  costCenter,
                   style: Theme.of(context).textTheme.bodySmall,
-                ),
-                padding: EdgeInsets.all(12)),
-            CustomDropDown(items: [
+                )),
+            CustomDropDown(items: const [
               'CC 007',
               'CC x3',
               'CC 34',
@@ -124,12 +129,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
               'CC XX'
             ], hint: 'CC XX', onChanged: (value) {}),
             Padding(
+                padding: const EdgeInsets.all(12),
                 child: Text(
-                  'Sales Man',
+                  salesMan,
                   style: Theme.of(context).textTheme.bodySmall,
-                ),
-                padding: EdgeInsets.all(12)),
-            CustomDropDown(items: [
+                )),
+            CustomDropDown(items: const [
               'Akshay',
               'Jimmy',
               'Joseph',
@@ -138,15 +143,19 @@ class _PaymentScreenState extends State<PaymentScreen> {
               'Salam'
             ], hint: 'Jimmy', onChanged: (value) {}),
             Padding(
+                padding: const EdgeInsets.all(12),
                 child: Text(
-                  'Area',
+                  area,
                   style: Theme.of(context).textTheme.bodySmall,
-                ),
-                padding: EdgeInsets.all(12)),
-            CustomDropDown(
-                items: ['QS 009', 'SFC 0', 'NAS x0', 'KP 90', 'A 009', 'SDF 0'],
-                hint: 'SDF 0',
-                onChanged: (value) {}),
+                )),
+            CustomDropDown(items: const [
+              'QS 009',
+              'SFC 0',
+              'NAS x0',
+              'KP 90',
+              'A 009',
+              'SDF 0'
+            ], hint: 'SDF 0', onChanged: (value) {}),
           ],
         ),
       ),

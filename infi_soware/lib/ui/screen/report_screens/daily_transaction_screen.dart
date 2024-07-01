@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/custom_appbar.dart';
 import 'package:intl/intl.dart';
 
 class DailyTransactionScreen extends StatefulWidget {
@@ -17,6 +19,7 @@ class _DailyTransactionScreenState extends State<DailyTransactionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(title: dailyTransaction),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Row(
@@ -27,7 +30,7 @@ class _DailyTransactionScreenState extends State<DailyTransactionScreen> {
                 controller: _dateController,
                 decoration: InputDecoration(
                   labelText: widget.label,
-                  suffixIcon: Icon(Icons.calendar_today),
+                  suffixIcon: const Icon(Icons.calendar_today),
                 ),
                 readOnly: true,
                 onTap: () {
@@ -35,7 +38,7 @@ class _DailyTransactionScreenState extends State<DailyTransactionScreen> {
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 8,
             ),
             Expanded(
@@ -44,7 +47,7 @@ class _DailyTransactionScreenState extends State<DailyTransactionScreen> {
                 controller: _dateController,
                 decoration: InputDecoration(
                   labelText: widget.label,
-                  suffixIcon: Icon(Icons.calendar_today),
+                  suffixIcon: const Icon(Icons.calendar_today),
                 ),
                 readOnly: true,
                 onTap: () {

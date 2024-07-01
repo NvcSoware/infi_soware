@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/custom_appbar.dart';
 import 'package:infi_soware/ui/widgets/custom_drop_down.dart';
 import 'package:intl/intl.dart';
 
@@ -18,6 +20,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(title: accountLedger),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: ListView(
@@ -25,7 +28,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
-                'DATE',
+                date,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
@@ -37,7 +40,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                     controller: _dateController,
                     decoration: InputDecoration(
                       labelText: widget.label,
-                      suffixIcon: Icon(Icons.calendar_today),
+                      suffixIcon: const Icon(Icons.calendar_today),
                     ),
                     readOnly: true,
                     onTap: () {
@@ -51,7 +54,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                     controller: _dateController,
                     decoration: InputDecoration(
                       labelText: widget.label,
-                      suffixIcon: Icon(Icons.calendar_today),
+                      suffixIcon: const Icon(Icons.calendar_today),
                     ),
                     readOnly: true,
                     onTap: () {
@@ -64,7 +67,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Text(
-                'A/C Ledger',
+                accountLedger,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
@@ -74,7 +77,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.search),
+                    icon: const Icon(Icons.search),
                     onPressed: () {},
                   )),
             ),
@@ -83,7 +86,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                 Expanded(
                     flex: 1,
                     child: Text(
-                      'Credit Limit :',
+                      creditLimit,
                       style: Theme.of(context).textTheme.bodySmall,
                     )),
                 Expanded(
@@ -102,13 +105,13 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
               children: [
                 Checkbox(value: false, onChanged: (onChanged) {}),
                 Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Text('Exclude Opening',
+                  padding: const EdgeInsets.all(12),
+                  child: Text(excludeOpening,
                       style: Theme.of(context).textTheme.bodySmall),
                 )
               ],
             ),
-            CustomDropDown(items: [
+            CustomDropDown(items: const [
               'CC XX',
               'CC 002',
               'CC 345',
@@ -119,18 +122,18 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                 children: [
                   Radio(value: false, groupValue: 2, onChanged: (onChanged) {}),
                   Text(
-                    'No Reconciliation',
+                    noReconciliation,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Radio(value: true, groupValue: 0, onChanged: (onChanged) {}),
                   Text(
-                    'Reconciliation',
+                    noReconciliation,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Radio(value: false, groupValue: 1, onChanged: (onChanged) {}),
                   Expanded(
                     child: Text(
-                      'Entry Date',
+                      entryDate,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ),
@@ -143,17 +146,17 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                 children: [
                   Radio(value: false, groupValue: 2, onChanged: (onChanged) {}),
                   Text(
-                    'Approved',
+                    approved,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Radio(value: true, groupValue: 0, onChanged: (onChanged) {}),
                   Text(
-                    'Pending',
+                    pending,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Radio(value: false, groupValue: 1, onChanged: (onChanged) {}),
                   Text(
-                    'All',
+                    all,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
@@ -165,12 +168,12 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                 children: [
                   Checkbox(value: true, onChanged: (value) {}),
                   Text(
-                    'Month Wise',
+                    monthWise,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   Checkbox(value: false, onChanged: (value) {}),
                   Text(
-                    'Consolidate Date',
+                    consolidateDate,
                     style: Theme.of(context).textTheme.bodySmall,
                   )
                 ],

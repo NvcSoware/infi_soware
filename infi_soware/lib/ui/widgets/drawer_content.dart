@@ -59,7 +59,16 @@ class DrawerContent extends StatelessWidget {
               title: 'Price View',
               onTap: () {
                 Navigator.pop(context);
+                Navigator.pushNamed(context, Routes.priceView);
               }),
+          CustomListTile(
+            iconData: Icons.abc,
+            title: 'Price Stock',
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, Routes.priceStock);
+            },
+          ),
           Row(
             children: [
               const Padding(
@@ -77,13 +86,6 @@ class DrawerContent extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ],
-          ),
-          CustomListTile(
-            iconData: Icons.abc,
-            title: 'Price Stock',
-            onTap: () {
-              Navigator.pop(context);
-            },
           ),
           CustomListTile(
             iconData: Icons.abc,

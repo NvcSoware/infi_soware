@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/custom_appbar.dart';
 
 class PriceViewScreen extends StatelessWidget {
   const PriceViewScreen({super.key});
@@ -6,8 +8,9 @@ class PriceViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppbar(title: priceView),
       body: Container(
-        margin: EdgeInsets.only(left: 12, right: 12),
+        margin: const EdgeInsets.only(left: 12, right: 12),
         child: Row(
           children: [
             Expanded(
@@ -25,7 +28,7 @@ class PriceViewScreen extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onPrimary,
                 height: 48,
                 width: 64,
-                child: Text('GO +'),
+                child: const Text('GO +'),
               ),
             ),
             Expanded(
@@ -35,7 +38,7 @@ class PriceViewScreen extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onSecondary,
                 height: 48,
                 width: 64,
-                child: Text('Lookup'),
+                child: const Text('Lookup'),
               ),
             )
           ],

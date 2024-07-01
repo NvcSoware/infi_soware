@@ -14,11 +14,15 @@ import 'package:infi_soware/ui/screen/inventory_screens/transfer_out_screen.dart
 import 'package:infi_soware/ui/screen/login_screen.dart';
 import 'package:infi_soware/ui/screen/report_screens/account_ledger_screen.dart';
 import 'package:infi_soware/ui/screen/report_screens/customer_balance_in_days_screen.dart';
+import 'package:infi_soware/ui/screen/report_screens/invoice_item_screen.dart';
 import 'package:infi_soware/ui/screen/views_screens/price_checker_screen.dart';
+import 'package:infi_soware/ui/screen/views_screens/price_stock_screen.dart';
+import 'package:infi_soware/ui/screen/views_screens/price_view_screen.dart';
 
 import 'ui/screen/inventory_screens/physical_stock.dart';
 import 'ui/screen/report_screens/daily_closing_screen.dart';
 import 'ui/screen/report_screens/daily_transaction_screen.dart';
+import 'ui/screen/report_screens/invoice_report_screen.dart';
 import 'ui/screen/report_screens/transaction_summery_screen.dart';
 
 class Routes {
@@ -34,7 +38,9 @@ class Routes {
   static const String transferOut = '/transferOutScreen';
   static const String reciept = '/recieptScreen';
   static const String payment = '/paymentScreen';
-  static const String priceChecker = '/priceCheckerScreen';
+  static const String priceCheck = '/priceCheckScreen';
+  static const String priceView = '/priceViewScreen';
+  static const String priceStock = '/priceStockScreen';
   static const String accountLedger = '/accountLedgerScreen';
   static const String balanceInDays = '/balanceInDaysScreen';
   static const String dailyTransaction = '/dailyTransactionScreen';
@@ -91,7 +97,9 @@ class Routes {
 
       reciept: (context) => RecieptScreen(),
       payment: (context) => PaymentScreen(),
-      priceChecker: (context) => PriceCheckerScreen(),
+      priceCheck: (context) => PriceCheckerScreen(),
+      priceView: (context) => PriceViewScreen(),
+      priceStock: (context) => PriceStockScreen(),
       accountLedger: (context) => AccountLedgerScreen(
           label: 'Selected ',
           onDateSelected: (DateTime date) {
@@ -113,12 +121,12 @@ class Routes {
           onDateSelected: (DateTime date) {
             log('selected date ${date.toString()}');
           }),
-      invoiceReport: (context) => DailyClosingScreen(
+      invoiceReport: (context) => InvoiceReportScreen(
           label: 'Selected ',
           onDateSelected: (DateTime date) {
             log('selected date ${date.toString()}');
           }),
-      invoiceItem: (context) => DailyClosingScreen(
+      invoiceItem: (context) => InvoiceItemScreen(
           label: 'Selected ',
           onDateSelected: (DateTime date) {
             log('selected date ${date.toString()}');
