@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/common_text.dart';
 import 'package:infi_soware/ui/widgets/custom_appbar.dart';
+import 'package:infi_soware/ui/widgets/custom_date_field.dart';
 import 'package:infi_soware/ui/widgets/custom_drop_down.dart';
 import 'package:intl/intl.dart';
 
@@ -24,68 +26,69 @@ class _InvoiceItemScreenState extends State<InvoiceItemScreen> {
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const CommonText(text: search),
+            const CommonText(text: transactionType),
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Text(
-                transactionType,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
+              child: CustomDropDown(items: const [
+                'Purchase',
+                'Sale',
+                'Purchase Order',
+                'Sales Order',
+                'Sales Return',
+                'Purchase Return',
+                'Stock Transfer In',
+                'Stcok Transfer Out',
+                'Physical Stock',
+                'Damage Stock',
+                'Stock Adjust',
+                'Quotation',
+                'Production - Production',
+                'Production Consumption',
+                'Delivery Challan',
+                'Goods Recieved Note',
+                'Packing',
+                'Packing Consumption'
+              ], hint: 'Sales Order', onChanged: (onChanged) {}),
             ),
-            CustomDropDown(items: const [
-              'Purchase',
-              'Sale',
-              'Purchase Order',
-              'Sales Order',
-              'Sales Return',
-              'Purchase Return',
-              'Stock Transfer In',
-              'Stcok Transfer Out',
-              'Physical Stock',
-              'Damage Stock',
-              'Stock Adjust',
-              'Quotation',
-              'Production - Production',
-              'Production Consumption',
-              'Delivery Challan',
-              'Goods Recieved Note',
-              'Packing',
-              'Packing Consumption'
-            ], hint: 'Sales Order', onChanged: (onChanged) {}),
+            const CommonText(text: date),
             Row(
               children: [
                 Expanded(
-                  flex: 1,
-                  child: TextFormField(
-                    controller: _dateController,
-                    decoration: InputDecoration(
+                    flex: 1,
+                    child: CustomDateField(
+                      controller: _dateController,
                       labelText: widget.label,
-                      suffixIcon: const Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
-                    onTap: () {
-                      _selectDate(context);
-                    },
-                  ),
-                ),
+                      onTap: () {
+                        _selectDate(context);
+                      },
+                    )),
                 const SizedBox(
                   width: 8,
                 ),
                 Expanded(
-                  flex: 1,
-                  child: TextFormField(
-                    controller: _dateController,
-                    decoration: InputDecoration(
+                    flex: 1,
+                    child: CustomDateField(
+                      controller: _dateController,
                       labelText: widget.label,
-                      suffixIcon: const Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
-                    onTap: () {
-                      _selectDate(context);
-                    },
-                  ),
-                ),
+                      onTap: () {
+                        _selectDate(context);
+                      },
+                    )),
               ],
+            ),
+            const CommonText(text: area),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: CustomDropDown(items: const [
+                'Table 03',
+                'T EX009',
+                'AXL 54',
+                'GBS xx',
+                'G/10 7',
+              ], hint: '--Select', onChanged: (onChanged) {}),
             ),
           ],
         ),

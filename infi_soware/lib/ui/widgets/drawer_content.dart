@@ -52,7 +52,7 @@ class DrawerContent extends StatelessWidget {
               title: 'Price Checker',
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, '/priceCheckerScreen');
+                Navigator.pushNamed(context, Routes.priceCheck);
               }),
           CustomListTile(
               iconData: Icons.abc,

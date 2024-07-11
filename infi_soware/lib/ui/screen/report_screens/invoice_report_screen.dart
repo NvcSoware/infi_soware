@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:infi_soware/ui/widgets/common_text.dart';
 import 'package:infi_soware/ui/widgets/custom_appbar.dart';
+import 'package:infi_soware/ui/widgets/custom_date_field.dart';
 import 'package:infi_soware/ui/widgets/custom_drop_down.dart';
 import 'package:intl/intl.dart';
 
@@ -25,45 +27,41 @@ class _InvoiceReportScreenState extends State<InvoiceReportScreen> {
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const CommonText(text: search),
+            const CommonText(text: transactionType),
             Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                transactionType,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
+              padding: const EdgeInsets.only(right: 12),
+              child: CustomDropDown(items: const [
+                'Purchase',
+                'Sale',
+                'Purchase Order',
+                'Sales Order',
+                'Sales Return',
+                'Purchase Return',
+                'Stock Transfer In',
+                'Stcok Transfer Out',
+                'Physical Stock',
+                'Damage Stock',
+                'Stock Adjust',
+                'Quotation',
+                'Production - Production',
+                'Production Consumption',
+                'Delivery Challan',
+                'Goods Recieved Note',
+                'Packing',
+                'Packing Consumption'
+              ], hint: 'Sales Order', onChanged: (onChanged) {}),
             ),
-            CustomDropDown(items: const [
-              'Purchase',
-              'Sale',
-              'Purchase Order',
-              'Sales Order',
-              'Sales Return',
-              'Purchase Return',
-              'Stock Transfer In',
-              'Stcok Transfer Out',
-              'Physical Stock',
-              'Damage Stock',
-              'Stock Adjust',
-              'Quotation',
-              'Production - Production',
-              'Production Consumption',
-              'Delivery Challan',
-              'Goods Recieved Note',
-              'Packing',
-              'Packing Consumption'
-            ], hint: 'Sales Order', onChanged: (onChanged) {}),
+            const CommonText(text: date),
             Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: TextFormField(
+                  child: CustomDateField(
                     controller: _dateController,
-                    decoration: InputDecoration(
-                      labelText: widget.label,
-                      suffixIcon: const Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
+                    labelText: widget.label,
                     onTap: () {
                       _selectDate(context);
                     },
@@ -74,13 +72,9 @@ class _InvoiceReportScreenState extends State<InvoiceReportScreen> {
                 ),
                 Expanded(
                   flex: 1,
-                  child: TextFormField(
+                  child: CustomDateField(
                     controller: _dateController,
-                    decoration: InputDecoration(
-                      labelText: widget.label,
-                      suffixIcon: const Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
+                    labelText: widget.label,
                     onTap: () {
                       _selectDate(context);
                     },

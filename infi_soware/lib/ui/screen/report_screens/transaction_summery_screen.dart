@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/common_text.dart';
 import 'package:infi_soware/ui/widgets/custom_appbar.dart';
+import 'package:infi_soware/ui/widgets/custom_date_field.dart';
 import 'package:infi_soware/ui/widgets/custom_drop_down.dart';
 import 'package:intl/intl.dart';
 
@@ -25,14 +27,10 @@ class _TransactionSummeryScreenState extends State<TransactionSummeryScreen> {
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                'Transaction Type ',
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
+            const CommonText(text: search),
+            const CommonText(text: transactionType),
             CustomDropDown(items: const [
               'Purchase',
               'Sale',
@@ -53,17 +51,14 @@ class _TransactionSummeryScreenState extends State<TransactionSummeryScreen> {
               'Packing',
               'Packing Consumption'
             ], hint: 'Sales Order', onChanged: (onChanged) {}),
+            const CommonText(text: date),
             Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: TextFormField(
+                  child: CustomDateField(
                     controller: _dateController,
-                    decoration: InputDecoration(
-                      labelText: widget.label,
-                      suffixIcon: const Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
+                    labelText: widget.label,
                     onTap: () {
                       _selectDate(context);
                     },
@@ -74,13 +69,9 @@ class _TransactionSummeryScreenState extends State<TransactionSummeryScreen> {
                 ),
                 Expanded(
                   flex: 1,
-                  child: TextFormField(
+                  child: CustomDateField(
                     controller: _dateController,
-                    decoration: InputDecoration(
-                      labelText: widget.label,
-                      suffixIcon: const Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
+                    labelText: widget.label,
                     onTap: () {
                       _selectDate(context);
                     },

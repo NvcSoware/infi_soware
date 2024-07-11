@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:infi_soware/constants.dart';
 import 'package:infi_soware/ui/utils/drop_down_items.dart';
+import 'package:infi_soware/ui/widgets/btn_row.dart';
+import 'package:infi_soware/ui/widgets/common_text.dart';
 import 'package:infi_soware/ui/widgets/common_text_form_field.dart';
 import 'package:infi_soware/ui/widgets/custom_appbar.dart';
 import 'package:infi_soware/ui/widgets/custom_button.dart';
+import 'package:infi_soware/ui/widgets/custom_date_field.dart';
 import 'package:infi_soware/ui/widgets/custom_text_field.dart';
 import 'package:intl/intl.dart';
 
@@ -35,42 +38,8 @@ class _TransferOutScreenState extends State<TransferOutScreen> {
         padding: const EdgeInsets.all(12.0),
         child: ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustomButton(
-                    onPressed: () {},
-                    color: Theme.of(context).colorScheme.primary,
-                    size: const Size(96, 40),
-                    child: Text(
-                      newB,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    )),
-                CustomButton(
-                    onPressed: () {},
-                    color: Theme.of(context).colorScheme.primary,
-                    size: const Size(96, 40),
-                    child: Text(
-                      editB,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    )),
-                CustomButton(
-                    onPressed: () {},
-                    color: Theme.of(context).colorScheme.primary,
-                    size: const Size(96, 40),
-                    child: Text(
-                      reprintB,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    )),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                number,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
+            const BtnRow(),
+            const CommonText(text: number),
             Row(
               children: [
                 Expanded(
@@ -80,51 +49,30 @@ class _TransferOutScreenState extends State<TransferOutScreen> {
                       hint: 'Select an Option',
                       onChanged: (value) {}),
                 ),
+                const SizedBox(
+                  width: 8,
+                ),
                 Expanded(
                     flex: 1,
                     child: CommonTextFormFiled(controller: _controller))
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                date,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
-            TextFormField(
+            const CommonText(text: date),
+            CustomDateField(
               controller: _dateController,
-              decoration: InputDecoration(
-                labelText: widget.label,
-                suffixIcon: const Icon(Icons.calendar_today),
-              ),
-              readOnly: true,
               onTap: () {
                 _selectDate(context);
               },
+              labelText: widget.label,
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                payment,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
+            const CommonText(text: payment),
             CustomDropDown(
                 items: const ['CASH', 'CREDIT', 'CARD'],
                 hint: 'CASH',
                 onChanged: (value) {}),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  rem01,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: rem01),
             CommonTextFormFiled(controller: _remController),
-            Text(
-              supplier,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
+            const CommonText(text: supplier),
             TextFormField(
               decoration: InputDecoration(
                   border: const OutlineInputBorder(),
@@ -135,33 +83,13 @@ class _TransferOutScreenState extends State<TransferOutScreen> {
                       icon: const Icon(Icons.add)),
                   suffixIcon: const Icon(Icons.search)),
             ),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  billingAddress,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: billingAddress),
             CommonTextFormFiled(controller: _remController),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  deliveryAddress,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: deliveryAddress),
             CommonTextFormFiled(controller: _remController),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  phone,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: phone),
             CommonTextFormFiled(controller: _remController),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  priceType,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: priceType),
             CustomDropDown(items: const [
               'Consumer Card Price',
               'Purchase Price',
@@ -172,19 +100,9 @@ class _TransferOutScreenState extends State<TransferOutScreen> {
               'Min Operating Price',
               'Max Retail Price',
             ], hint: 'Margin Free Price', onChanged: (value) {}),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  phone,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: phone),
             CommonTextFormFiled(controller: _remController),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  stockPoint,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: stockPoint),
             CustomDropDown(items: const [
               'Godown 001',
               'Godown x32',
@@ -195,12 +113,7 @@ class _TransferOutScreenState extends State<TransferOutScreen> {
               'Godown xq',
               'Godown gd',
             ], hint: '--Select--', onChanged: (value) {}),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  area,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: area),
             CustomDropDown(items: const [
               'Table 001',
               'Table x32',
@@ -211,36 +124,17 @@ class _TransferOutScreenState extends State<TransferOutScreen> {
               'Table xq',
               'Table gd',
             ], hint: '--Select--', onChanged: (value) {}),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  docNumber,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: docNumber),
             CommonTextFormFiled(controller: _remController),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  docDate,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
-            TextFormField(
+            const CommonText(text: docDate),
+            CustomDateField(
               controller: _dateController,
-              decoration: InputDecoration(
-                labelText: widget.label,
-                suffixIcon: const Icon(Icons.calendar_today),
-              ),
-              readOnly: true,
+              labelText: widget.label,
               onTap: () {
                 _selectDate(context);
               },
             ),
-            Padding(
-                padding: const EdgeInsets.all(12),
-                child: Text(
-                  docAmount,
-                  style: Theme.of(context).textTheme.bodySmall,
-                )),
+            const CommonText(text: docAmount),
             CommonTextFormFiled(controller: _remController),
           ],
         ),
@@ -291,7 +185,7 @@ void _showPopup(BuildContext context) {
           content: ListView(
             children: [
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   ledgerCode,
                   style: Theme.of(context).textTheme.bodySmall,
@@ -299,7 +193,7 @@ void _showPopup(BuildContext context) {
               ),
               CommonTextFormFiled(controller: _ledgerCodeController),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   ledgerName,
                   style: Theme.of(context).textTheme.bodySmall,
@@ -307,7 +201,7 @@ void _showPopup(BuildContext context) {
               ),
               CommonTextFormFiled(controller: _ledgerNameController),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   accStatus,
                   style: Theme.of(context).textTheme.bodySmall,
@@ -315,7 +209,7 @@ void _showPopup(BuildContext context) {
               ),
               CommonTextFormFiled(controller: _accStatusController),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   remarks,
                   style: Theme.of(context).textTheme.bodySmall,
@@ -323,14 +217,14 @@ void _showPopup(BuildContext context) {
               ),
               CommonTextFormFiled(controller: _remarksController),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   address,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   address01,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -340,7 +234,7 @@ void _showPopup(BuildContext context) {
                 controller: _add01Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   address02,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -350,7 +244,7 @@ void _showPopup(BuildContext context) {
                 controller: _add02Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   place,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -360,7 +254,7 @@ void _showPopup(BuildContext context) {
                 controller: _add03Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   phone,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -373,14 +267,14 @@ void _showPopup(BuildContext context) {
                 height: 5,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   bankDetails,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   accName,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -390,7 +284,7 @@ void _showPopup(BuildContext context) {
                 controller: _add01Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   accNumber,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -400,7 +294,7 @@ void _showPopup(BuildContext context) {
                 controller: _add02Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   accType,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -414,7 +308,7 @@ void _showPopup(BuildContext context) {
                 'Loan Account'
               ], hint: 'Current Account', onChanged: (value) {}),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   bankName,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -424,7 +318,7 @@ void _showPopup(BuildContext context) {
                 controller: _add03Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   branchName,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -434,7 +328,7 @@ void _showPopup(BuildContext context) {
                 controller: _add03Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   ifscCode,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -456,14 +350,14 @@ void _showPopup(BuildContext context) {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   gst,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   gstNumber,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -473,7 +367,7 @@ void _showPopup(BuildContext context) {
                 controller: _add01Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   panNumber,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -483,7 +377,7 @@ void _showPopup(BuildContext context) {
                 controller: _add02Controller,
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
                 child: Text(
                   state,
                   style: Theme.of(context).textTheme.labelSmall,

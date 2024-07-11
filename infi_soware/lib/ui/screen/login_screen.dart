@@ -5,14 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infi_soware/bloc/login/login_bloc.dart';
 import 'package:infi_soware/constants.dart';
 import 'package:infi_soware/data/api_service.dart';
-import 'package:infi_soware/ui/screen/home_screen.dart';
 import 'package:infi_soware/ui/widgets/custom_button.dart';
 import 'package:infi_soware/ui/widgets/custom_text_field.dart';
 
-import '../../routes.dart';
-
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({super.key, required String name});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -41,8 +38,8 @@ class _LoginScreenState extends State<LoginScreen> {
           color: Theme.of(context).colorScheme.primary,
           child: Center(
               child: Container(
-            margin: EdgeInsets.only(left: 16, right: 16),
-            padding: EdgeInsets.all(16),
+            margin: const EdgeInsets.only(left: 16, right: 16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0), color: Colors.white),
             child: Form(
@@ -82,7 +79,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (state is LoginSuccessState) {
                         state.showBranchListPopup(context);
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text(loginSuccess)));
+                            const SnackBar(
+                                backgroundColor: Colors.green,
+                                content: Text(loginSuccess)));
                         // Navigator.pushReplacement(
                         //     context,
                         //     MaterialPageRoute(
@@ -93,17 +92,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         //             );
                       } else if (state is LoginErrorState) {
                         log(state.error);
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(SnackBar(content: Text(state.error)));
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(state.error),
+                          backgroundColor: Colors.red,
+                        ));
                       }
                     },
                     builder: (context, state) {
                       if (state is LoginLoaingState) {
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       }
                       return CustomButton(
                           color: Theme.of(context).colorScheme.onSecondary,
-                          size: Size(double.infinity, 48),
+                          size: const Size(double.infinity, 48),
                           onPressed: () {
                             if (_formKey.currentState?.validate() ?? false) {
                               context.read<LoginBloc>().add(LoginEvent(

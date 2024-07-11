@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/common_text.dart';
 import 'package:infi_soware/ui/widgets/custom_appbar.dart';
+import 'package:infi_soware/ui/widgets/custom_date_field.dart';
 import 'package:intl/intl.dart';
 
 class DailyTransactionScreen extends StatefulWidget {
@@ -22,38 +24,37 @@ class _DailyTransactionScreenState extends State<DailyTransactionScreen> {
       appBar: const CustomAppbar(title: dailyTransaction),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
-        child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(
-              flex: 1,
-              child: TextFormField(
-                controller: _dateController,
-                decoration: InputDecoration(
-                  labelText: widget.label,
-                  suffixIcon: const Icon(Icons.calendar_today),
+            const CommonText(text: search),
+            const CommonText(text: date),
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: CustomDateField(
+                    controller: _dateController,
+                    labelText: widget.label,
+                    onTap: () {
+                      _selectDate(context);
+                    },
+                  ),
                 ),
-                readOnly: true,
-                onTap: () {
-                  _selectDate(context);
-                },
-              ),
-            ),
-            const SizedBox(
-              width: 8,
-            ),
-            Expanded(
-              flex: 1,
-              child: TextFormField(
-                controller: _dateController,
-                decoration: InputDecoration(
-                  labelText: widget.label,
-                  suffixIcon: const Icon(Icons.calendar_today),
+                const SizedBox(
+                  width: 8,
                 ),
-                readOnly: true,
-                onTap: () {
-                  _selectDate(context);
-                },
-              ),
+                Expanded(
+                  flex: 1,
+                  child: CustomDateField(
+                    controller: _dateController,
+                    labelText: widget.label,
+                    onTap: () {
+                      _selectDate(context);
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         ),

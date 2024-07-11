@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/common_text.dart';
 import 'package:infi_soware/ui/widgets/custom_appbar.dart';
+import 'package:infi_soware/ui/widgets/custom_date_field.dart';
 import 'package:infi_soware/ui/widgets/custom_drop_down.dart';
 import 'package:intl/intl.dart';
 
@@ -25,38 +27,28 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
         padding: const EdgeInsets.all(12.0),
         child: ListView(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                date,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
+            const CommonText(text: search),
+            const CommonText(text: date),
             Row(
               children: [
                 Expanded(
                   flex: 1,
-                  child: TextFormField(
+                  child: CustomDateField(
                     controller: _dateController,
-                    decoration: InputDecoration(
-                      labelText: widget.label,
-                      suffixIcon: const Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
+                    labelText: widget.label,
                     onTap: () {
                       _selectDate(context);
                     },
                   ),
                 ),
+                const SizedBox(
+                  width: 8,
+                ),
                 Expanded(
                   flex: 1,
-                  child: TextFormField(
+                  child: CustomDateField(
                     controller: _dateController,
-                    decoration: InputDecoration(
-                      labelText: widget.label,
-                      suffixIcon: const Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
+                    labelText: widget.label,
                     onTap: () {
                       _selectDate(context);
                     },
@@ -64,13 +56,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Text(
-                accountLedger,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ),
+            const CommonText(text: accountLedger),
             TextFormField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -81,34 +67,24 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
                     onPressed: () {},
                   )),
             ),
-            Row(
+            const Row(
               children: [
                 Expanded(
                     flex: 1,
-                    child: Text(
-                      creditLimit,
-                      style: Theme.of(context).textTheme.bodySmall,
+                    child: CommonText(
+                      text: creditLimit,
                     )),
                 Expanded(
                     flex: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Text('Credit Days :',
-                            style: Theme.of(context).textTheme.bodySmall),
-                      ),
+                    child: CommonText(
+                      text: creditDays,
                     )),
               ],
             ),
             Row(
               children: [
                 Checkbox(value: false, onChanged: (onChanged) {}),
-                Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Text(excludeOpening,
-                      style: Theme.of(context).textTheme.bodySmall),
-                )
+                const CommonText(text: excludeOpening),
               ],
             ),
             CustomDropDown(items: const [
@@ -117,7 +93,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
               'CC 345',
             ], hint: 'CC XX', onChanged: (onChanged) {}),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
               child: Row(
                 children: [
                   Radio(value: false, groupValue: 2, onChanged: (onChanged) {}),
@@ -141,7 +117,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
               child: Row(
                 children: [
                   Radio(value: false, groupValue: 2, onChanged: (onChanged) {}),
@@ -163,7 +139,7 @@ class _AccountLedgerScreenState extends State<AccountLedgerScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
               child: Row(
                 children: [
                   Checkbox(value: true, onChanged: (value) {}),

@@ -12,13 +12,15 @@ class PriceCheckerScreen extends StatelessWidget {
         title: priceChecker,
       ),
       body: Container(
-        margin: const EdgeInsets.only(left: 12, right: 12),
+        margin: const EdgeInsets.only(left: 12, right: 12, top: 12),
         child: Row(
           children: [
             Expanded(
               flex: 6,
               child: TextFormField(
                 decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 20),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8))),
               ),

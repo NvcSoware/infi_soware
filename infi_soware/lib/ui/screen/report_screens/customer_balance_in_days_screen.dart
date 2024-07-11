@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:infi_soware/constants.dart';
+import 'package:infi_soware/ui/widgets/common_text.dart';
 import 'package:infi_soware/ui/widgets/common_text_form_field.dart';
 import 'package:infi_soware/ui/widgets/custom_appbar.dart';
 
@@ -15,11 +16,10 @@ class CustomerBalanceInDaysScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              accountLedger,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
+            const CommonText(text: search),
+            const CommonText(text: accountLedger),
             TextFormField(
               decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -29,9 +29,7 @@ class CustomerBalanceInDaysScreen extends StatelessWidget {
                     onPressed: () {},
                   )),
             ),
-            const SizedBox(
-              height: 12,
-            ),
+            const CommonText(text: days),
             CommonTextFormFiled(controller: _controller)
           ],
         ),

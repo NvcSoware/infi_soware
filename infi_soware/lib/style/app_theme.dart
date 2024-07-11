@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 final ThemeData appTheme = ThemeData(
   colorScheme: ColorScheme.fromSeed(
-      primary: Color(0xFF01355d),
-      onPrimary: Color(0xff008FFF),
-      secondary: Color(0xFF00447e),
-      onSecondary: Color(0xffFFAA00),
-      seedColor: Color(0xff150dc4)),
+      primary: const Color(0xFF01355d),
+      onPrimary: const Color(0xff008FFF),
+      secondary: const Color(0xFF00447e),
+      onSecondary: const Color(0xffFFAA00),
+      seedColor: const Color(0xff150dc4)),
   textTheme: appTextTheme,
   inputDecorationTheme: inputDecorationTheme,
   //elevatedButtonTheme: elevatedButtonThemeData
@@ -19,12 +19,12 @@ final ThemeData appTheme = ThemeData(
 //         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))));
 
 final InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
-  hintStyle: TextStyle(color: Color(0xFF3B9AE1).withOpacity(0.5)),
-  focusedBorder: OutlineInputBorder(
+  hintStyle: TextStyle(color: const Color(0xFF3B9AE1).withOpacity(0.5)),
+  focusedBorder: const OutlineInputBorder(
     borderSide: BorderSide(color: Color(0xFF3B9AE1)),
   ),
   enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Color(0xFF3B9AE1).withOpacity(0.5)),
+    borderSide: BorderSide(color: const Color(0xFF3B9AE1).withOpacity(0.5)),
   ),
 );
 

@@ -23,7 +23,7 @@ const String payment = 'Payment';
 const String newB = 'NEW';
 const String editB = 'EDIT';
 const String reprintB = 'REPRINT';
-const String lookup = 'Lookup';
+const String lookup = 'LOOKUP';
 const String goPlus = 'GO +';
 
 //common Strings //
@@ -83,7 +83,11 @@ const String all = 'All';
 const String monthWise = 'Month Wise';
 const String consolidateDate = 'Consolidate Date';
 const String transactionType = 'Transaction Type ';
-
+const String search = 'Search';
+const String openingCash = 'Opening Cash';
+const String days = 'Days';
+const String creditDays = 'Credit Days :';
+const String groupType = 'Group Type';
 // app bar titles //
 
 const String transactioSummery = 'Transaction Summery';
@@ -93,7 +97,7 @@ const String dailyTransaction = 'Daily Transaction';
 const String dailyClosing = 'Daily Closing';
 const String customerBalanceInDays = 'Customer Balance In Days';
 const String accountLedger = 'Account Ledger';
-const String priceChecker = 'Price Checker';
+const String priceChecker = 'Check Price Here';
 const String priceStock = 'Price - Stock';
 const String priceView = 'Price View';
 const String grn = 'GRN';

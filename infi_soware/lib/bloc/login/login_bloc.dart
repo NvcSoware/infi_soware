@@ -1,10 +1,6 @@
-import 'dart:developer';
-
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:infi_soware/model/login_response.dart';
-
-import 'package:meta/meta.dart';
 
 import '../../data/api_service.dart';
 import '../../ui/widgets/branch_list_popup.dart';
@@ -28,8 +24,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(LoginSuccessState(
           companies: loginResponse, onBranchSelected: (CompanyList) {}));
     } catch (e) {
-      log('Error is $e');
-      emit(LoginErrorState('Error : $e'));
+      //log('Error is $e');
+      emit(LoginErrorState('Invalid Username or Password'));
     }
   }
 }

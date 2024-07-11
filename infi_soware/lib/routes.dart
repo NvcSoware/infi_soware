@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:infi_soware/prelogin_checking.dart';
 import 'package:infi_soware/ui/screen/accounts_screens/payment_screen.dart';
 import 'package:infi_soware/ui/screen/accounts_screens/reciept_screen.dart';
 import 'package:infi_soware/ui/screen/home_screen.dart';
@@ -26,6 +27,7 @@ import 'ui/screen/report_screens/invoice_report_screen.dart';
 import 'ui/screen/report_screens/transaction_summery_screen.dart';
 
 class Routes {
+  //static const String prelogin = '/';
   static const String login = '/';
   static const String home = '/home';
   static const String sales = '/salesScreen';
@@ -51,7 +53,10 @@ class Routes {
 
   static Map<String, WidgetBuilder> getRoutes() {
     return {
-      login: (context) => LoginScreen(),
+      //prelogin: (context) => PreloginChecking(),
+      login: (context) => LoginScreen(
+            name: '',
+          ),
       // home: (context) => HomeScreen()
       sales: (context) => SalesScreen(
             label: 'select date',
