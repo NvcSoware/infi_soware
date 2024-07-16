@@ -1,6 +1,8 @@
 // App Url //
 const String baseUrl = 'http://androidinfimob.soware.in/';
 const String loginUrl = 'api/APIAdmin/FormLogin';
+const String transLookup = 'api/APITransaction/GetTransLookup';
+const String getSettings = 'api/APIHome/GetSettings';
 
 //constant texts//
 

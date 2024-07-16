@@ -11,8 +11,8 @@ import 'style/app_theme.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-  sqfliteFfiInit();
-  databaseFactory = databaseFactoryFfi;
+  //sqfliteFfiInit();
+  //databaseFactory = databaseFactoryFfi;
   await DatabaseHelper().database;
   runApp(BlocProvider(
     create: (context) => LoginBloc(ApiService()),
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: appTheme,
       routes: Routes.getRoutes(),
-      initialRoute: Routes.login,
+      initialRoute: Routes.prelogin,
     );
   }
 }

@@ -22,7 +22,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           await apiService.login(event.userName, event.userPassword);
 
       emit(LoginSuccessState(
-          companies: loginResponse, onBranchSelected: (CompanyList) {}));
+          companies: loginResponse,
+          onBranchSelected: (CompanyList) {},
+          companyNumber: loginResponse.companyList.companyNumber));
     } catch (e) {
       //log('Error is $e');
       emit(LoginErrorState('Invalid Username or Password'));

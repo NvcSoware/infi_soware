@@ -9,8 +9,16 @@ class LoginLoaingState extends LoginState {}
 class LoginSuccessState extends LoginState {
   final CompanyElement companies;
   final Function(CompanyList) onBranchSelected;
+  final int companyNumber;
+  final int yearNumber;
+  final int userNumber;
 
-  LoginSuccessState({required this.companies, required this.onBranchSelected});
+  LoginSuccessState(
+      {required this.companyNumber,
+      required this.yearNumber,
+      required this.userNumber,
+      required this.companies,
+      required this.onBranchSelected});
   showBranchListPopup(BuildContext context) {
     showDialog(
         context: context,

@@ -37,6 +37,12 @@ class DatabaseHelper {
     await db.insert("user_info", {'name': name});
   }
 
+  Future<void> saveUserInfo(Map<String, dynamic> userinfo) async {
+    final db = await database;
+    await db.insert('user_info', userinfo,
+        conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
   Future<String?> getName() async {
     final db = await database;
     var result = await db.query('user_info', limit: 1);
@@ -53,5 +59,10 @@ class DatabaseHelper {
       return result.first;
     }
     return null;
+  }
+
+  Future<String?> getNameUrl() async {
+    final userInfo = await getUserInfo();
+    return userInfo?['name'] as String?;
   }
 }

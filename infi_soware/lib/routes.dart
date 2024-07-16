@@ -27,8 +27,8 @@ import 'ui/screen/report_screens/invoice_report_screen.dart';
 import 'ui/screen/report_screens/transaction_summery_screen.dart';
 
 class Routes {
-  //static const String prelogin = '/';
-  static const String login = '/';
+  static const String prelogin = '/';
+  static const String login = '/login';
   static const String home = '/home';
   static const String sales = '/salesScreen';
   static const String grn = '/grnScreen';
@@ -53,7 +53,7 @@ class Routes {
 
   static Map<String, WidgetBuilder> getRoutes() {
     return {
-      //prelogin: (context) => PreloginChecking(),
+      prelogin: (context) => PreloginChecking(),
       login: (context) => LoginScreen(
             name: '',
           ),
